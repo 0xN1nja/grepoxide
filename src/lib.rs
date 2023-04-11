@@ -19,7 +19,6 @@ impl<'a> Config<'a> {
 }
 
 pub fn search<'a>(query: &'a str, file_path: &'a str) -> Vec<String> {
-    control::set_virtual_terminal(true).unwrap_or_else(|_| {});
     let mut result_vec: Vec<String> = Vec::new();
     let file: String = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
         eprintln!("Unable To Read File");
