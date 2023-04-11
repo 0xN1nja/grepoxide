@@ -1,7 +1,7 @@
 #![allow(unused)]
 #![allow(dead_code)]
 
-use colored::{self, *};
+use ansi_term::{self, *};
 use std::io::{self, *};
 
 pub struct Config<'a> {
@@ -26,7 +26,7 @@ pub fn search<'a>(query: &'a str, file_path: &'a str) -> Vec<String> {
     });
     for mut i in file.lines() {
         if i.contains(query) {
-            result_vec.push(i.replace(query, &query.red().to_string()[..]));
+            result_vec.push(i.replace(query, &ansi_term::Color::Red.paint(query).to_string()[..]))
         }
     }
     result_vec
