@@ -1,8 +1,8 @@
 #![allow(unused)]
 #![allow(dead_code)]
 
-use ansi_term::{self, *};
-use std::io::{self, *};
+use colored::*;
+use std::io::*;
 
 pub struct Config<'a> {
     pub query: &'a str,
@@ -19,7 +19,6 @@ impl<'a> Config<'a> {
 }
 
 pub fn search<'a>(query: &'a str, file_path: &'a str) -> Vec<String> {
-    ansi_term::enable_ansi_support();
     let mut result_vec: Vec<String> = Vec::new();
     let file: String = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
         eprintln!("Unable To Read File");
@@ -27,7 +26,7 @@ pub fn search<'a>(query: &'a str, file_path: &'a str) -> Vec<String> {
     });
     for mut i in file.lines() {
         if i.contains(query) {
-            result_vec.push(i.replace(query, &ansi_term::Color::Red.paint(query).to_string()[..]))
+            result_vec.push(i.replace(query, &query.red().to_string()[..]));
         }
     }
     result_vec
