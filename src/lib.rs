@@ -19,6 +19,7 @@ impl<'a> Config<'a> {
 }
 
 pub fn search<'a>(query: &'a str, file_path: &'a str) -> Vec<String> {
+    ansi_term::enable_ansi_support();
     let mut result_vec: Vec<String> = Vec::new();
     let file: String = std::fs::read_to_string(file_path).unwrap_or_else(|_| {
         eprintln!("Unable To Read File");
