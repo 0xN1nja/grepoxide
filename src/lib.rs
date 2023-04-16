@@ -1,8 +1,8 @@
 #![allow(unused)]
 #![allow(dead_code)]
 
-use colored::*;
 use std::io::*;
+use colored::*;
 
 pub struct Config<'a> {
     pub query: &'a str,
