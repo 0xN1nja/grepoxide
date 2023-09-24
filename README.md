@@ -1,5 +1,5 @@
 # grepoxide
-### An Oxidized Version Of `grep`. Written In Rust 🚀
+### An Oxidized Version Of `grep` Written In Rust 
 
 # Usage
 ```bash
